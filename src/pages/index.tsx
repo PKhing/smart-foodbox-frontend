@@ -1,3 +1,5 @@
+import Typography from 'common/components/Typography'
+import { StyledTypography } from 'common/components/Typography/styled'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'

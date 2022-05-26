@@ -4,6 +4,7 @@ import Typography from 'common/components/Typography'
 import moment from 'moment'
 import Image from 'next/image'
 import React, { useEffect } from 'react'
+import useEdit from './hooks/useEdit'
 import useExpand from './hooks/useExpand'
 import {
   ButtonContainer,
@@ -21,11 +22,7 @@ import { CardProps } from './types'
 
 const Card = ({ variant, time, weight, note }: CardProps) => {
   const { expand, handleExpand, handleShrink } = useExpand(variant || 'default')
-
-  useEffect(() => {
-    if (variant != 'short') handleExpand()
-    else handleShrink()
-  }, [handleExpand, handleShrink, variant])
+  const { value, handleChange, handleSave, handleDelete } = useEdit()
 
   return (
     <CardContainer expand={expand}>
@@ -46,7 +43,11 @@ const Card = ({ variant, time, weight, note }: CardProps) => {
           </Typography>
         </InformationConatainer>
         {variant === 'edit' ? (
-          <TextArea placeholder="Note ..." />
+          <TextArea
+            placeholder="Note ..."
+            value={value}
+            onChange={handleChange}
+          />
         ) : (
           note && (
             <InformationConatainer>
@@ -58,12 +59,16 @@ const Card = ({ variant, time, weight, note }: CardProps) => {
           )
         )}
       </LongInfoContainer>
+
       {variant === 'edit' && (
         <ButtonContainer>
-          <Button variant="secondary">ยกเลิก</Button>
-          <Button>ยืนยัน</Button>
+          <Button variant="secondary" onClick={handleDelete}>
+            ลบ
+          </Button>
+          <Button onClick={handleSave}>บันทึก</Button>
         </ButtonContainer>
       )}
+
       {variant === 'short' &&
         (expand ? (
           <ShrinkIcon onClick={handleShrink} />

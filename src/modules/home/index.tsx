@@ -1,5 +1,5 @@
 import Typography from 'common/components/Typography'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdOutlineHistory } from 'react-icons/md'
 import { HiSparkles } from 'react-icons/hi'
 import { useMediaQuery } from 'react-responsive'
@@ -10,9 +10,8 @@ import useFood from './hooks/useFood'
 
 const Home = () => {
   const { newFood, history } = useFood()
-  const isSmall = useMediaQuery({
-    query: '(max-width: 735px)',
-  })
+  // TODO fix this
+  const isSmall = false
 
   return (
     <Container>

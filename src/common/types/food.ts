@@ -1,6 +1,17 @@
+import { Timestamp } from 'firebase/firestore'
+
 export interface Food {
+  img: string
   id: string
-  time: Date
+  timeCreated: Date
   weight: number
-  note?: string
+  note: string
+}
+
+export interface GetFoodResponse {
+  img: string
+  timeCreated: Timestamp
+  note: string
+  weight: number
+  confirm: boolean
 }

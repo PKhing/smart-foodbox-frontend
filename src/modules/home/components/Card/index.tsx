@@ -3,7 +3,7 @@ import TextArea from 'common/components/TextArea'
 import Typography from 'common/components/Typography'
 import moment from 'moment'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
 import useEdit from './hooks/useEdit'
 import useExpand from './hooks/useExpand'
 import {
@@ -20,7 +20,7 @@ import {
 } from './styled'
 import { CardProps } from './types'
 
-const Card = ({ variant, time, weight, note }: CardProps) => {
+const Card = ({ variant, timeCreated, weight, note }: CardProps) => {
   const { expand, handleExpand, handleShrink } = useExpand(variant || 'default')
   const { value, handleChange, handleSave, handleDelete } = useEdit()
 
@@ -32,7 +32,7 @@ const Card = ({ variant, time, weight, note }: CardProps) => {
       <InformationConatainer>
         <ClockIcon />
         <Typography color="$primary600" css={{ marginBottom: '-3px' }}>
-          {moment(time).format('DD/MM/YYYY hh:mm')}
+          {moment(timeCreated).format('DD/MM/YYYY hh:mm')}
         </Typography>
       </InformationConatainer>
       <LongInfoContainer expand={expand}>
@@ -49,7 +49,7 @@ const Card = ({ variant, time, weight, note }: CardProps) => {
             onChange={handleChange}
           />
         ) : (
-          note && (
+          note !== '' && (
             <InformationConatainer>
               <NoteIcon />
               <Typography color="$primary600" css={{ marginBottom: '-3px' }}>

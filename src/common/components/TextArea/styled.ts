@@ -6,7 +6,7 @@ export const TextArea = styled('textarea', {
   border: '1px solid #8C8C8C',
   boxSizing: 'border-box',
   color: '$primary600',
-  backgroundColor: 'white',
+  backgroundColor: '$white',
   resize: 'none',
   height: '75px',
   padding: '10px',

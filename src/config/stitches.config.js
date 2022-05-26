@@ -19,9 +19,14 @@ export const {
       primary600: '#5A8698',
       primary700: '#3F4C6E',
       primary800: '#323459',
+      white: '#FFFFFF',
     },
     fonts: {
       IBMPlexSans: "'IBM Plex Sans Thai', sans-serif",
+    },
+    shadows: {
+      shadow1: '0px 2px 5px 0px #00000026',
+      shadow2: '0px 2px 4px rgba(0, 0, 0, 0.25)',
     },
   },
   media: {
@@ -30,6 +35,26 @@ export const {
     md: '(max-width: 768px)',
     lg: '(max-width: 960px)',
     xl: '(max-width: 1280px)',
+  },
+})
+
+export const darkTheme = createTheme('dark-theme', {
+  colors: {
+    white: '#323459',
+    primary200: '#3F4C6E',
+    primary300: '#5A8698',
+    primary400: '#5A8698',
+    primary500: '#68A7AD',
+    primary600: '#B6DBC3',
+    primary700: '#CBE6CF',
+    primary800: '#E0F0DF',
+  },
+  fonts: {
+    IBMPlexSans: "'IBM Plex Sans Thai', sans-serif",
+  },
+  shadows: {
+    shadow1: '0px 2px 5px rgba(0, 0, 0, 0.5)',
+    shadow2: '0px 2px 4px rgba(0, 0, 0, 0.75)',
   },
 })
 

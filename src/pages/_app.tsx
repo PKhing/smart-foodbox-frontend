@@ -2,10 +2,15 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import TopBar from 'common/components/TopBar'
+import { darkTheme, styled } from 'config/stitches.config'
+
+const Container = styled('div', {
+  backgroundColor: '$white',
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <div className={darkTheme}>
       <Head>
         <title>Smart Foodbox</title>
         <meta
@@ -14,9 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TopBar />
-      <Component {...pageProps} />
-    </>
+      <Container>
+        <TopBar />
+        <Component {...pageProps} />
+      </Container>
+    </div>
   )
 }
 

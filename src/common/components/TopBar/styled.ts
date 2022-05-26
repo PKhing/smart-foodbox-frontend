@@ -3,11 +3,12 @@ import { MdFastfood } from 'react-icons/md'
 
 export const Container = styled('div', {
   padding: '15px 20px',
-  boxShadow: '0px 2px 5px 0px #00000026',
+  boxShadow: '$shadow1',
   width: '100%',
   display: 'flex',
   gap: '10px',
   alignItems: 'center',
+  backgroundColor: '$white',
   '@sm': {
     padding: '10px',
   },

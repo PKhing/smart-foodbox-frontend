@@ -11,7 +11,7 @@ export const Button = styled('button', {
   variants: {
     variant: {
       primary: {
-        color: 'white',
+        color: '$white',
         backgroundColor: '$primary500',
         '&:hover': {
           backgroundColor: '$primary600',

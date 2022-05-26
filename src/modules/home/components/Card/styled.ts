@@ -5,7 +5,7 @@ import { AiOutlineExpandAlt, AiOutlineShrink } from 'react-icons/ai'
 import { RiEditBoxFill } from 'react-icons/ri'
 
 export const CardContainer = styled('div', {
-  boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
+  boxShadow: '$shadow2',
   padding: '10px',
   gap: '10px',
   display: 'flex',
@@ -13,6 +13,7 @@ export const CardContainer = styled('div', {
   position: 'relative',
   transition: 'gap 1s',
   width: '350px',
+  backgroundColor: '$white',
   '@sm': {
     width: '100%',
   },

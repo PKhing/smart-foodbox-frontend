@@ -3,20 +3,25 @@ import Typography from 'common/components/Typography'
 import moment from 'moment'
 import Image from 'next/image'
 import React from 'react'
+import useExpand from './hooks/useExpand'
 import {
   ButtonContainer,
   CardContainer,
   ClockIcon,
+  ExpandIcon,
   ImageContainer,
   InformationConatainer,
+  LongInfoContainer,
+  ShrinkIcon,
   WeigtIcon,
 } from './styled'
 import { CardProps } from './types'
 
-const Card = ({ time, weight }: CardProps) => {
+const Card = ({ variant, time, weight }: CardProps) => {
+  const { expand, handleExpand, handleShrink } = useExpand(variant || 'default')
   return (
-    <CardContainer>
-      <ImageContainer>
+    <CardContainer expand={expand}>
+      <ImageContainer expand={expand}>
         <Image src="/placeholder.png" alt="" layout="fill" objectFit="cover" />
       </ImageContainer>
       <InformationConatainer>
@@ -25,16 +30,26 @@ const Card = ({ time, weight }: CardProps) => {
           {moment(time).format('DD/MM/YYYY hh:mm')}
         </Typography>
       </InformationConatainer>
-      <InformationConatainer>
-        <WeigtIcon />
-        <Typography color="$primary600" css={{ marginBottom: '-3px' }}>
-          {weight} กรัม
-        </Typography>
-      </InformationConatainer>
-      <ButtonContainer>
-        <Button variant="secondary">ยกเลิก</Button>
-        <Button>ยืนยัน</Button>
-      </ButtonContainer>
+      <LongInfoContainer expand={expand}>
+        <InformationConatainer>
+          <WeigtIcon />
+          <Typography color="$primary600" css={{ marginBottom: '-3px' }}>
+            {weight} กรัม
+          </Typography>
+        </InformationConatainer>
+      </LongInfoContainer>
+      {variant == 'withButton' && (
+        <ButtonContainer>
+          <Button variant="secondary">ยกเลิก</Button>
+          <Button>ยืนยัน</Button>
+        </ButtonContainer>
+      )}
+      {variant == 'short' &&
+        (expand ? (
+          <ShrinkIcon onClick={handleShrink} />
+        ) : (
+          <ExpandIcon onClick={handleExpand} />
+        ))}
     </CardContainer>
   )
 }

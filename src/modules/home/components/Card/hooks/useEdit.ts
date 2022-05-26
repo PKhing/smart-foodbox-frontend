@@ -5,7 +5,7 @@ const useEdit = () => {
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setValue(e.target.value)
+      setValue(e.target.value.slice(0, 200))
     },
     []
   )

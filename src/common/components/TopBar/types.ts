@@ -1,4 +1,6 @@
+import { Theme } from 'common/hooks/useTheme'
+
 export interface TopBarProps {
-  theme: 'light' | 'dark'
+  theme: Theme
   toggleTheme: () => void
 }

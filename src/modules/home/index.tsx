@@ -1,9 +1,13 @@
 import Typography from 'common/components/Typography'
 import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 import Card from './components/Card'
 import { CardContainer, Container } from './styled'
 
 const Home = () => {
+  const isSmall = useMediaQuery({
+    query: '(max-width: 735px)',
+  })
   return (
     <Container>
       <Typography variant="h1">New Food</Typography>
@@ -16,9 +20,21 @@ const Home = () => {
         History
       </Typography>
       <CardContainer>
-        <Card time={new Date()} weight={200} variant="short" />
-        <Card time={new Date()} weight={200} variant="short" />
-        <Card time={new Date()} weight={200} variant="short" />
+        <Card
+          time={new Date()}
+          weight={200}
+          variant={isSmall ? 'short' : 'default'}
+        />
+        <Card
+          time={new Date()}
+          weight={200}
+          variant={isSmall ? 'short' : 'default'}
+        />
+        <Card
+          time={new Date()}
+          weight={200}
+          variant={isSmall ? 'short' : 'default'}
+        />
       </CardContainer>
     </Container>
   )

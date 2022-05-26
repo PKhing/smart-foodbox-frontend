@@ -3,6 +3,7 @@ import { styled } from 'config/stitches.config'
 export const StyledTypography = styled('div', {
   fontFamily: '$IBMPlexSans',
   color: '$primary700',
+  width: 'fit-content',
   variants: {
     variant: {
       h1: {

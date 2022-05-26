@@ -5,13 +5,16 @@ import { AiOutlineExpandAlt, AiOutlineShrink } from 'react-icons/ai'
 
 export const CardContainer = styled('div', {
   boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
-  width: '100%',
   padding: '10px',
   gap: '10px',
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
   transition: 'gap 1s',
+  width: '350px',
+  '@sm': {
+    width: '100%',
+  },
   variants: {
     expand: {
       false: {

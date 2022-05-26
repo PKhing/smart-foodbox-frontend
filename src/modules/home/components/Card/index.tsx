@@ -2,7 +2,7 @@ import Button from 'common/components/Button'
 import Typography from 'common/components/Typography'
 import moment from 'moment'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import useExpand from './hooks/useExpand'
 import {
   ButtonContainer,
@@ -19,6 +19,10 @@ import { CardProps } from './types'
 
 const Card = ({ variant, time, weight }: CardProps) => {
   const { expand, handleExpand, handleShrink } = useExpand(variant || 'default')
+  useEffect(() => {
+    if (variant != 'short') handleExpand()
+    else handleShrink()
+  }, [handleExpand, handleShrink, variant])
   return (
     <CardContainer expand={expand}>
       <ImageContainer expand={expand}>

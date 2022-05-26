@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
-const useExpand = (variant: 'edit' | 'default' | 'short') => {
-  const [expand, setExpand] = useState(variant !== 'short')
+const useExpand = (variant?: 'default' | 'edit') => {
+  const [expand, setExpand] = useState(variant === 'edit')
 
   const handleExpand = useCallback(() => {
     setExpand(true)
@@ -10,11 +10,6 @@ const useExpand = (variant: 'edit' | 'default' | 'short') => {
   const handleShrink = useCallback(() => {
     setExpand(false)
   }, [])
-
-  useEffect(() => {
-    if (variant != 'short') handleExpand()
-    else handleShrink()
-  }, [handleExpand, handleShrink, variant])
 
   return { expand, handleExpand, handleShrink }
 }

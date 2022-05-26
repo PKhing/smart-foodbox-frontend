@@ -19,7 +19,9 @@ export const CardContainer = styled('div', {
   variants: {
     expand: {
       false: {
-        gap: '0px',
+        '@media screen and (max-width: 735px)': {
+          gap: '0px',
+        },
       },
     },
   },
@@ -31,7 +33,13 @@ export const ImageContainer = styled('div', {
   position: 'relative',
   transition: 'height 1s',
   variants: {
-    expand: { false: { height: '0px' } },
+    expand: {
+      false: {
+        '@media screen and (max-width: 735px)': {
+          height: '0px',
+        },
+      },
+    },
   },
 })
 
@@ -63,6 +71,9 @@ export const ExpandIcon = styled(AiOutlineExpandAlt, {
   right: '10px',
   bottom: '10px',
   cursor: 'pointer',
+  '@media screen and (min-width: 735px)': {
+    display: 'none',
+  },
 })
 
 export const ShrinkIcon = styled(AiOutlineShrink, {
@@ -72,6 +83,9 @@ export const ShrinkIcon = styled(AiOutlineShrink, {
   right: '10px',
   bottom: '10px',
   cursor: 'pointer',
+  '@media screen and (min-width: 735px)': {
+    display: 'none',
+  },
 })
 
 export const ButtonContainer = styled('div', {
@@ -88,6 +102,12 @@ export const LongInfoContainer = styled('div', {
   overflow: 'hidden',
   gap: '10px',
   variants: {
-    expand: { false: { maxHeight: '0px' } },
+    expand: {
+      false: {
+        '@media screen and (max-width: 735px)': {
+          maxHeight: '0px',
+        },
+      },
+    },
   },
 })

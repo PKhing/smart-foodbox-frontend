@@ -21,9 +21,8 @@ import {
 import { CardProps } from './types'
 
 const Card = ({ variant, timeCreated, weight, note }: CardProps) => {
-  const { expand, handleExpand, handleShrink } = useExpand(variant || 'default')
+  const { expand, handleExpand, handleShrink } = useExpand(variant)
   const { value, handleChange, handleSave, handleDelete } = useEdit()
-
   return (
     <CardContainer expand={expand}>
       <ImageContainer expand={expand}>
@@ -60,21 +59,18 @@ const Card = ({ variant, timeCreated, weight, note }: CardProps) => {
         )}
       </LongInfoContainer>
 
-      {variant === 'edit' && (
+      {variant === 'edit' ? (
         <ButtonContainer>
           <Button variant="secondary" onClick={handleDelete}>
             ลบ
           </Button>
           <Button onClick={handleSave}>บันทึก</Button>
         </ButtonContainer>
+      ) : expand ? (
+        <ShrinkIcon onClick={handleShrink} />
+      ) : (
+        <ExpandIcon onClick={handleExpand} />
       )}
-
-      {variant === 'short' &&
-        (expand ? (
-          <ShrinkIcon onClick={handleShrink} />
-        ) : (
-          <ExpandIcon onClick={handleExpand} />
-        ))}
     </CardContainer>
   )
 }

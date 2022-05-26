@@ -10,8 +10,6 @@ import useFood from './hooks/useFood'
 
 const Home = () => {
   const { newFood, history } = useFood()
-  // TODO fix this
-  const isSmall = false
 
   return (
     <Container>
@@ -20,7 +18,7 @@ const Home = () => {
         New Food
       </Typography>
       <CardContainer>
-        {!!newFood ? (
+        {newFood.length !== 0 ? (
           <>
             {newFood.map((food) => (
               <Card key={food.id} {...food} variant="edit" />
@@ -30,7 +28,7 @@ const Home = () => {
           <NoFood />
         )}
       </CardContainer>
-      {!!history && (
+      {history.length !== 0 && (
         <>
           <Typography variant="h1" css={{ marginTop: '25px' }}>
             <MdOutlineHistory
@@ -40,11 +38,7 @@ const Home = () => {
           </Typography>
           <CardContainer>
             {history!.map((food) => (
-              <Card
-                key={food.id}
-                {...food}
-                variant={isSmall ? 'short' : 'default'}
-              />
+              <Card key={food.id} {...food} variant={'default'} />
             ))}
           </CardContainer>
         </>

@@ -2,6 +2,7 @@ import { styled } from 'config/stitches.config'
 import { MdAccessTimeFilled } from 'react-icons/md'
 import { FaWeight } from 'react-icons/fa'
 import { AiOutlineExpandAlt, AiOutlineShrink } from 'react-icons/ai'
+import { RiEditBoxFill } from 'react-icons/ri'
 
 export const CardContainer = styled('div', {
   boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
@@ -50,6 +51,11 @@ export const WeigtIcon = styled(FaWeight, {
   fontSize: '1.25rem',
 })
 
+export const NoteIcon = styled(RiEditBoxFill, {
+  color: '$primary600',
+  fontSize: '1.5rem',
+})
+
 export const ExpandIcon = styled(AiOutlineExpandAlt, {
   color: '$primary700',
   fontSize: '1.5rem',
@@ -75,10 +81,13 @@ export const ButtonContainer = styled('div', {
 })
 
 export const LongInfoContainer = styled('div', {
-  height: '24px',
+  maxHeight: '300px',
+  transition: 'max-height 1s',
+  display: 'flex',
+  flexDirection: 'column',
   overflow: 'hidden',
-  transition: 'height 1s',
+  gap: '10px',
   variants: {
-    expand: { false: { height: '0px' } },
+    expand: { false: { maxHeight: '0px' } },
   },
 })

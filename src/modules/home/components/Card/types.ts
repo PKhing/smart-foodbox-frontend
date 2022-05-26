@@ -1,5 +1,6 @@
 export interface CardProps {
   time: Date
   weight: number
-  variant?: 'withButton' | 'default' | 'short'
+  note?: string
+  variant?: 'edit' | 'default' | 'short'
 }

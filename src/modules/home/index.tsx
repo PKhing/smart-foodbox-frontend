@@ -12,8 +12,8 @@ const Home = () => {
     <Container>
       <Typography variant="h1">New Food</Typography>
       <CardContainer>
-        <Card time={new Date()} weight={200} variant="withButton" />
-        <Card time={new Date()} weight={200} variant="withButton" />
+        <Card time={new Date()} weight={200} variant="edit" />
+        <Card time={new Date()} weight={200} variant="edit" />
       </CardContainer>
 
       <Typography variant="h1" css={{ marginTop: '25px' }}>
@@ -24,11 +24,13 @@ const Home = () => {
           time={new Date()}
           weight={200}
           variant={isSmall ? 'short' : 'default'}
+          note="ทำไม genshin เกลือจังครับ"
         />
         <Card
           time={new Date()}
           weight={200}
           variant={isSmall ? 'short' : 'default'}
+          note="ทำไม genshin เกลือจังครับ"
         />
         <Card
           time={new Date()}

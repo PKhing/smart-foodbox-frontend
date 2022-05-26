@@ -1,4 +1,5 @@
 import Button from 'common/components/Button'
+import TextArea from 'common/components/TextArea'
 import Typography from 'common/components/Typography'
 import moment from 'moment'
 import Image from 'next/image'
@@ -12,17 +13,20 @@ import {
   ImageContainer,
   InformationConatainer,
   LongInfoContainer,
+  NoteIcon,
   ShrinkIcon,
   WeigtIcon,
 } from './styled'
 import { CardProps } from './types'
 
-const Card = ({ variant, time, weight }: CardProps) => {
+const Card = ({ variant, time, weight, note }: CardProps) => {
   const { expand, handleExpand, handleShrink } = useExpand(variant || 'default')
+
   useEffect(() => {
     if (variant != 'short') handleExpand()
     else handleShrink()
   }, [handleExpand, handleShrink, variant])
+
   return (
     <CardContainer expand={expand}>
       <ImageContainer expand={expand}>
@@ -41,14 +45,26 @@ const Card = ({ variant, time, weight }: CardProps) => {
             {weight} กรัม
           </Typography>
         </InformationConatainer>
+        {variant === 'edit' ? (
+          <TextArea placeholder="Note ..." />
+        ) : (
+          note && (
+            <InformationConatainer>
+              <NoteIcon />
+              <Typography color="$primary600" css={{ marginBottom: '-3px' }}>
+                {note}
+              </Typography>
+            </InformationConatainer>
+          )
+        )}
       </LongInfoContainer>
-      {variant == 'withButton' && (
+      {variant === 'edit' && (
         <ButtonContainer>
           <Button variant="secondary">ยกเลิก</Button>
           <Button>ยืนยัน</Button>
         </ButtonContainer>
       )}
-      {variant == 'short' &&
+      {variant === 'short' &&
         (expand ? (
           <ShrinkIcon onClick={handleShrink} />
         ) : (

@@ -6,7 +6,7 @@ const useTheme = () => {
   const [theme, setTheme] = useState<Theme>('light')
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setTheme(localStorage.getItem('theme') as Theme)
+      setTheme((localStorage.getItem('theme') as Theme) || 'light')
     }
   }, [])
 

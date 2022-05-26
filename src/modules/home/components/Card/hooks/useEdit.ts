@@ -12,8 +12,12 @@ const useEdit = (id: string) => {
   )
 
   const handleSave = useCallback(() => {
-    // TODO
-  }, [])
+    try {
+      apiClient.post(`/post/${id}`, { note: value })
+    } catch (e) {
+      console.log(e)
+    }
+  }, [id, value])
 
   const handleDelete = useCallback(() => {
     try {

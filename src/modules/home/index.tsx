@@ -5,11 +5,15 @@ import { HiSparkles } from 'react-icons/hi'
 import { useMediaQuery } from 'react-responsive'
 import Card from './components/Card'
 import { CardContainer, Container } from './styled'
+import NoFood from './components/NoFood'
+import useFood from './hooks/useFood'
 
 const Home = () => {
+  const { newFood, history } = useFood()
   const isSmall = useMediaQuery({
     query: '(max-width: 735px)',
   })
+
   return (
     <Container>
       <Typography variant="h1">
@@ -17,35 +21,35 @@ const Home = () => {
         New Food
       </Typography>
       <CardContainer>
-        <Card time={new Date()} weight={200} variant="edit" />
-        <Card time={new Date()} weight={200} variant="edit" />
+        {!!newFood ? (
+          <>
+            {newFood.map((food) => (
+              <Card key={food.id} {...food} variant="edit" />
+            ))}
+          </>
+        ) : (
+          <NoFood />
+        )}
       </CardContainer>
-
-      <Typography variant="h1" css={{ marginTop: '25px' }}>
-        <MdOutlineHistory
-          style={{ marginBottom: '-4px', marginRight: '5px' }}
-        />
-        History
-      </Typography>
-      <CardContainer>
-        <Card
-          time={new Date()}
-          weight={200}
-          variant={isSmall ? 'short' : 'default'}
-          note="ทำไม genshin เกลือจังครับ"
-        />
-        <Card
-          time={new Date()}
-          weight={200}
-          variant={isSmall ? 'short' : 'default'}
-          note="ทำไม genshin เกลือจังครับ"
-        />
-        <Card
-          time={new Date()}
-          weight={200}
-          variant={isSmall ? 'short' : 'default'}
-        />
-      </CardContainer>
+      {!!history && (
+        <>
+          <Typography variant="h1" css={{ marginTop: '25px' }}>
+            <MdOutlineHistory
+              style={{ marginBottom: '-4px', marginRight: '5px' }}
+            />
+            History
+          </Typography>
+          <CardContainer>
+            {history!.map((food) => (
+              <Card
+                key={food.id}
+                {...food}
+                variant={isSmall ? 'short' : 'default'}
+              />
+            ))}
+          </CardContainer>
+        </>
+      )}
     </Container>
   )
 }

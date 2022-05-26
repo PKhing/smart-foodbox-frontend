@@ -20,9 +20,9 @@ import {
 } from './styled'
 import { CardProps } from './types'
 
-const Card = ({ variant, timeCreated, weight, note }: CardProps) => {
+const Card = ({ variant, timeCreated, weight, note, id }: CardProps) => {
   const { expand, handleExpand, handleShrink } = useExpand(variant)
-  const { value, handleChange, handleSave, handleDelete } = useEdit()
+  const { value, handleChange, handleSave, handleDelete } = useEdit(id)
   return (
     <CardContainer expand={expand}>
       <ImageContainer expand={expand}>

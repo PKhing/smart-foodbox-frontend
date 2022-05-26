@@ -1,6 +1,7 @@
+import { apiClient } from 'config/axiosInstance'
 import React, { useCallback, useState } from 'react'
 
-const useEdit = () => {
+const useEdit = (id: string) => {
   const [value, setValue] = useState('')
 
   const handleChange = useCallback(
@@ -15,8 +16,12 @@ const useEdit = () => {
   }, [])
 
   const handleDelete = useCallback(() => {
-    // TODO
-  }, [])
+    try {
+      apiClient.delete(`/post/${id}`)
+    } catch (e) {
+      console.log(e)
+    }
+  }, [id])
 
   return { value, handleChange, handleSave, handleDelete }
 }

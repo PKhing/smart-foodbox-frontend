@@ -28,6 +28,23 @@ export const CardContainer = styled('div', {
   },
 })
 
+export const Loading = styled('div', {
+  position: 'absolute',
+  top: '0px',
+  left: '0px',
+  height: '100%',
+  width: '100%',
+  backgroundColor: '#00000033',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  variants: {
+    loading: {
+      false: { display: 'none' },
+    },
+  },
+})
+
 export const ImageContainer = styled('div', {
   width: '100%',
   height: '220px',

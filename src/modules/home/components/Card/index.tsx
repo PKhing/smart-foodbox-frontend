@@ -4,6 +4,7 @@ import Typography from 'common/components/Typography'
 import moment from 'moment'
 import Image from 'next/image'
 import React from 'react'
+import { BallTriangle } from 'react-loader-spinner'
 import useEdit from './hooks/useEdit'
 import useExpand from './hooks/useExpand'
 import {
@@ -13,6 +14,7 @@ import {
   ExpandIcon,
   ImageContainer,
   InformationConatainer,
+  Loading,
   LongInfoContainer,
   NoteIcon,
   ShrinkIcon,
@@ -23,7 +25,7 @@ import { CardProps } from './types'
 const Card = (props: CardProps) => {
   const { variant, timeCreated, weight, note, img, id } = props
   const { expand, handleExpand, handleShrink } = useExpand(variant)
-  const { value, handleChange, handleSave, handleDelete } = useEdit(id)
+  const { value, handleChange, handleSave, handleDelete, loading } = useEdit(id)
   return (
     <CardContainer expand={expand}>
       <ImageContainer expand={expand}>
@@ -72,6 +74,9 @@ const Card = (props: CardProps) => {
       ) : (
         <ExpandIcon onClick={handleExpand} />
       )}
+      <Loading loading={loading}>
+        <BallTriangle height="100" width="100" color="#FFFFFFCC" />
+      </Loading>
     </CardContainer>
   )
 }

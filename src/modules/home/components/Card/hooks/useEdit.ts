@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react'
 
 const useEdit = (id: string) => {
   const [value, setValue] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -13,6 +14,7 @@ const useEdit = (id: string) => {
 
   const handleSave = useCallback(() => {
     try {
+      setLoading(true)
       apiClient.post(`/post/${id}`, { note: value })
     } catch (e) {
       console.log(e)
@@ -21,13 +23,14 @@ const useEdit = (id: string) => {
 
   const handleDelete = useCallback(() => {
     try {
+      setLoading(true)
       apiClient.delete(`/post/${id}`)
     } catch (e) {
       console.log(e)
     }
   }, [id])
 
-  return { value, handleChange, handleSave, handleDelete }
+  return { value, handleChange, handleSave, handleDelete, loading }
 }
 
 export default useEdit

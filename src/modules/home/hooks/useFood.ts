@@ -25,8 +25,15 @@ const useFood = () => {
         if (confirm) tmpHistory.push(food)
         else tmpNewFood.push(food)
       })
-      setNewFood([...tmpNewFood])
-      setNewHistory([...tmpHistory])
+
+      const sort = (foods: Food[]) =>
+        foods.sort(
+          (food1, food2) =>
+            food2.timeCreated.getTime() - food1.timeCreated.getTime()
+        )
+
+      setNewFood([...sort(tmpNewFood)])
+      setNewHistory([...sort(tmpHistory)])
     })
     return () => {
       if (unsubscribe.current) unsubscribe.current()

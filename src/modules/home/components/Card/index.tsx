@@ -34,7 +34,7 @@ const Card = (props: CardProps) => {
       <InformationConatainer>
         <ClockIcon />
         <Typography color="$primary600" css={{ marginBottom: '-3px' }}>
-          {moment(timeCreated).format('DD/MM/YYYY hh:mm')}
+          {moment(timeCreated).format('DD/MM/YYYY HH:mm')}
         </Typography>
       </InformationConatainer>
       <LongInfoContainer expand={expand}>

@@ -75,6 +75,7 @@ export const ClockIcon = styled(MdAccessTimeFilled, {
 export const WeigtIcon = styled(FaWeight, {
   color: '$primary600',
   fontSize: '1.25rem',
+  margin: '0 2px',
 })
 
 export const NoteIcon = styled(RiEditBoxFill, {
